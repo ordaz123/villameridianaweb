@@ -1,8 +1,8 @@
 import React from 'react';
-import Navbar from '../../components/global-components/navbar';
-import PageHeader from '../../components/global-components/page-header';
+import Navbar from '../../components/layouts/navbar';
+import PageHeader from '../../components/layouts/page-header';
 import GalleryDetails from './components/gallery-details';
-import Footer from '../../components/global-components/footer';
+import Footer from '../../components/layouts/footer';
 
 const GalleryDetailsPage = () => {
     return <div>

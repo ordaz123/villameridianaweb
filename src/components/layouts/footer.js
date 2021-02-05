@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import {withTranslation} from "react-i18next";
 
 class Footer_v1 extends Component {
 
+	constructor(props) {
+		super(props);
+	}
     componentDidMount() {
         let publicUrl = process.env.PUBLIC_URL+'/'
         const minscript = document.createElement("script");
@@ -104,4 +108,4 @@ class Footer_v1 extends Component {
 }
 
 
-export default Footer_v1
+export default withTranslation()(Footer_v1);

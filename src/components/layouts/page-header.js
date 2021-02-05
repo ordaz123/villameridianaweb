@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import {withTranslation} from "react-i18next";
 
 class Page_header extends Component {
-
+	constructor(props) {
+		super(props);
+	}
     render() {
 
         let HeaderTitle = this.props.headertitle;
@@ -32,4 +35,4 @@ class Page_header extends Component {
 }
 
 
-export default Page_header
+export default withTranslation()(Page_header)
