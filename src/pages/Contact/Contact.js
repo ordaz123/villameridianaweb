@@ -7,7 +7,7 @@ import Footer from '../../components/layouts/footer';
 const ContactPage = () => {
     return (<div>
         <Navbar />
-        <PageHeader headertitle="Contact Us"  />
+        <PageHeader headertitle="Book Now"  />
         <Contact />
         <Footer />
     </div>)

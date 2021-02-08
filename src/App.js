@@ -1,4 +1,4 @@
-import {HashRouter, Route, Switch} from "react-router-dom";
+import {Route, Switch} from "react-router-dom";
 import HomeV1 from "./pages/Homepage/Home";
 import AboutUs from "./pages/About/About";
 import TourDetails from "./pages/AccomodationDetails/tour-details";
@@ -13,9 +13,9 @@ const App = () => {
                 <Switch>
                     <Route exact path="/" component={HomeV1} />
                     <Route path="/about" component={AboutUs} />
-                    <Route path="/tour-details" component={TourDetails} />
+                    <Route path="/room" component={TourDetails} />
                     <Route path="/gallery-details" component={GalleryDetails} />
-                    <Route path="/contact" component={Contact} />
+                    <Route path="/booking" component={Contact} />
                 </Switch>
             </div>
     )

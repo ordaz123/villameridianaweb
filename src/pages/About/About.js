@@ -6,6 +6,7 @@ import About from './components/about';
 import Video from './components/video-v2';
 import Footer from '../../components/layouts/footer';
 import {withTranslation} from "react-i18next";
+import Map from "../../components/layouts/map";
 
 const AboutPage = (props) => {
     return <div>
@@ -14,6 +15,7 @@ const AboutPage = (props) => {
         <Intro />
         <About />
         <Video />
+        <Map/>
         <Footer />
     </div>
 }

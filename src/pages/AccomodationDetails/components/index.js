@@ -1,8 +1,20 @@
 import React, {useEffect, useState} from 'react';
-import {Link} from 'react-router-dom';
-import parse from 'html-react-parser';
-
+import ImageGallery from 'react-image-gallery';
+import "react-image-gallery/styles/css/image-gallery.css";
 import roomData from "../roomData";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+    faSwimmer,
+    faPaw,
+    faUmbrellaBeach,
+    faParking,
+    faWind,
+    faCoffee,
+    faBath,
+    faFire,
+    faDrumstickBite,
+    faCheck
+} from '@fortawesome/free-solid-svg-icons'
 
 const TourDetails = () => {
 
@@ -13,8 +25,35 @@ const TourDetails = () => {
 
     let publicUrl = process.env.PUBLIC_URL + '/'
 
+    const images = [
+        {
+            original: `${publicUrl}${roomData[url].photos[0]}`,
+            thumbnail: `${publicUrl}${roomData[url].photos[0]}`,
+        },
+        {
+            original: `${publicUrl}${roomData[url].photos[1]}`,
+            thumbnail: `${publicUrl}${roomData[url].photos[1]}`,
+        },
+        {
+            original: `${publicUrl}${roomData[url].photos[1]}`,
+            thumbnail: `${publicUrl}${roomData[url].photos[1]}`,
+        },
+        {
+            original: `${publicUrl}${roomData[url].photos[1]}`,
+            thumbnail: `${publicUrl}${roomData[url].photos[1]}`,
+        },
+        {
+            original: `${publicUrl}${roomData[url].photos[1]}`,
+            thumbnail: `${publicUrl}${roomData[url].photos[1]}`,
+        },
+        {
+            original: `${publicUrl}${roomData[url].photos[1]}`,
+            thumbnail: `${publicUrl}${roomData[url].photos[1]}`,
+        },
+    ];
+
     return <div>
-        <div className="breadcrumb-area jarallax" style={{backgroundImage: 'url('+publicUrl+'assets/img/bg/1.png)'}}>
+        <div className="breadcrumb-area jarallax" style={{backgroundImage: `url(${publicUrl}assets/img/room-banner/banner-${url}.jpg)`}}>
             <div className="container">
                 <div className="row">
                     <div className="col-lg-12">
@@ -33,101 +72,57 @@ const TourDetails = () => {
             <div className="tour-details-gallery">
                 <div className="container-bg bg-dark-blue">
                     <div className="container">
-                        <div className="gallery-filter-area row">
-                            <div className="gallery-sizer col-1"/>
-                            {/* gallery-item */}
-                            <div className="tp-gallery-item col-md-5 col-sm-6 mb-10">
-                                <div className="tp-gallery-item-img">
-                                    <div className="thumbnails">
-                                        <img src={publicUrl + "assets/img/tour-details/1.png"} alt="image"/>
-                                        <div className="video-popup-btn">
-                                            <a href="https://www.youtube.com/watch?v=c7XEhXZ_rsk"
-                                               className="video-play-btn mfp-iframe" tabIndex={0}><i
-                                                className="fa fa-play"/></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            {/* gallery-item */}
-                            <div className="tp-gallery-item col-md-3 col-sm-6">
-                                <div className="tp-gallery-item-img">
-                                    <a href="#" data-effect="mfp-zoom-in">
-                                        <img src={publicUrl + "assets/img/tour-details/2.png"} alt="image"/>
-                                    </a>
-                                </div>
-                            </div>
-                            {/* gallery-item */}
-                            <div className="tp-gallery-item col-lg-2 col-md-4 col-sm-6">
-                                <h1>{url}</h1>
-                                <div className="tp-gallery-item-img">
-                                    <a href="#" data-effect="mfp-zoom-in">
-                                        <img src={publicUrl + "assets/img/tour-details/3.png"} alt="image"/>
-                                    </a>
-                                </div>
-                            </div>
-                            {/* gallery-item */}
-                            <div className="tp-gallery-item col-lg-2 col-md-4 col-sm-6">
-                                <div className="tp-gallery-item-img">
-                                    <a href="#" data-effect="mfp-zoom-in">
-                                        <img src={publicUrl + "assets/img/tour-details/4.png"} alt="image"/>
-                                    </a>
-                                </div>
-                            </div>
-                            {/* gallery-item */}
-                            <div className="tp-gallery-item col-lg-2 col-md-4 col-sm-6">
-                                <div className="tp-gallery-item-img">
-                                    <a href="#" data-effect="mfp-zoom-in">
-                                        <img src={publicUrl + "assets/img/tour-details/5.png"} alt="image"/>
-                                    </a>
-                                </div>
-                            </div>
-                            {/* gallery-item */}
-                            <div className="tp-gallery-item col-lg-2 col-md-4 col-sm-6">
-                                <div className="tp-gallery-item-img">
-                                    <a href="#" data-effect="mfp-zoom-in">
-                                        <img src={publicUrl + "assets/img/tour-details/6.png"} alt="image"/>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
                         <div className="row">
-                            <div className="col-xl-3 col-lg-4">
-                                <div className="details">
-                                    <p className="location mb-0"><i className="fa fa-map-marker"/>Canada</p>
-                                    <h4 className="title">Bali Province</h4>
-                                    <p className="content">3 days 2 person</p>
-                                    <div className="tp-review-meta">
-                                        <i className="ic-yellow fa fa-star"/>
-                                        <i className="ic-yellow fa fa-star"/>
-                                        <i className="ic-yellow fa fa-star"/>
-                                        <i className="ic-yellow fa fa-star"/>
-                                        <i className="fa fa-star"/>
-                                        <span>4.0</span>
-                                    </div>
-                                    <div className="all-tags">
-                                        <a href="#">Adventures</a>
-                                        <a href="#">Local special ties</a>
-                                        <a href="#">Natural</a>
-                                        <a href="#">Travel</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="col-xl-9 col-lg-8">
+                            {/*<div className="col-xl-3 col-lg-4">*/}
+                                {/*<div className="details">*/}
+                                {/*    <p className="location mb-0"><i className="fa fa-map-marker"/>Canada</p>*/}
+                                {/*    <h4 className="title">Bali Province</h4>*/}
+                                {/*    <p className="content">3 days 2 person</p>*/}
+                                {/*    <div className="tp-review-meta">*/}
+                                {/*        <i className="ic-yellow fa fa-star"/>*/}
+                                {/*        <i className="ic-yellow fa fa-star"/>*/}
+                                {/*        <i className="ic-yellow fa fa-star"/>*/}
+                                {/*        <i className="ic-yellow fa fa-star"/>*/}
+                                {/*        <i className="fa fa-star"/>*/}
+                                {/*        <span>4.0</span>*/}
+                                {/*    </div>*/}
+                                {/*    <div className="all-tags">*/}
+                                {/*        <a href="#">Adventures</a>*/}
+                                {/*        <a href="#">Local special ties</a>*/}
+                                {/*        <a href="#">Natural</a>*/}
+                                {/*        <a href="#">Travel</a>*/}
+                                {/*    </div>*/}
+                                {/*</div>*/}
+                            {/*</div>*/}
+                            <div className="col-xl-12 col-lg-12">
                                 <div className="book-list-warp">
-                                    <p className="book-list-content">Just booked! Get your spot before it's too
-                                        late.</p>
+                                    <p className="book-list-content">Book your stay at Villa Meridiana before is too late!</p>
                                     <div className="tp-price-meta">
-                                        <p>Price</p>
-                                        <h2>775 <small>$</small></h2>
+                                        <p>Price<small> / night</small></p>
+                                        <h2>{roomData[url].price}<small>$</small></h2>
                                     </div>
                                 </div>
                                 <ul className="tp-list-meta border-tp-solid">
-                                    <li className="ml-0"><i className="fa fa-calendar-o"/> 8 Oct</li>
-                                    <li><i className="fa fa-clock-o"/> 4 Days</li>
-                                    <li><i className="fa fa-users"/>2 Person</li>
-                                    <li><i className="fa fa-snowflake-o"/> Relaxing</li>
-                                    <li><i className="fa fa-star"/> 4.3</li>
+                                    <li className="ml-0"><i className="fa fa-users"/>{roomData[url].persons} Person</li>
+
+                                    <li><i className="fa fa-home"/>{roomData[url].space} m&sup2;</li>
+                                    <li><FontAwesomeIcon icon={faUmbrellaBeach} /> 750m</li>
+                                    <li><FontAwesomeIcon icon={faPaw} /> Pet Friendly</li>
+                                    <li><FontAwesomeIcon icon={faSwimmer} /> Swimming Pool</li>
                                 </ul>
+                                <p className="book-list-content border-tp-solid pt-3 mt-4 text-light">Sleeping arrangements</p>
+                                <div className="text-white px-3 py-3 d-flex ">
+                                    <div className="sleeping-arrangement-box mx-2" >
+                                        <p className="text-orange">Bedroom 1</p>
+                                        <img className="invert" src={publicUrl + "assets/icon/bed.png"} alt="icons"/>
+                                        <p className="text-white">Double bed</p>
+                                    </div>
+                                    <div  className="sleeping-arrangement-box mx-2">
+                                        <p className="text-orange">Living room </p>
+                                        <img className="invert" src={publicUrl + "assets/icon/sofa.png"} alt="icons"/>
+                                        <p className="text-white">Sofa bed</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -137,31 +132,16 @@ const TourDetails = () => {
                 <div className="row">
                     <div className="col-lg-8">
                         <div className="tour-details-wrap">
-                            <h4 className="single-page-small-title">Write A Review</h4>
-                            <p>From its distinct half-hour time zone to its occasional June snowshower, Newfoundland
-                                runs on
-                                its own time. By August, the summer crowds have dwindled, berries hang ripe and heavy on
-                                their stems, and the landscape is ablaze with wildflowers. Join us at the peak of
-                                Newfoundland’s late summer season as we wind our way through the famously Celtic stretch
-                                of
-                                coastline known as the Irish Loop, exploring its unique history, folklore, cuisine, and
-                                breathtaking seaside scenery. We’ll enjoy dinners made from freshly foraged ingredients
-                                on a
-                                quiet dock, chat with a boat-builder in the midst of making a vessel, and learn how to
-                                craft
-                                heritage cheese from local experts while surrounded by an adorable, bleating tribe of
-                                tiny
-                                baby goats. As we make our way along the Loop, we’ll encounter countless characters,
-                                places,
-                                and stories that give this corner of the island its charm, tenacity, and unique
-                                flair.</p>
-                            <p> This trip is offered by Atlas Obscura. Once you've reserved your spot, our team will be
-                                in
-                                touch to help you prepare for the trip. Please note that flights to and from St. John's
-                                are
-                                not included in the trip cost. This trip is limited by 12 travelers.</p>
+                            <h4 className="single-page-small-title">Desrciption</h4>
+                            <p>{roomData[url].desc}</p>
+
+                            <div className="gallery-area mt-5">
+                                <h4 className="single-page-small-title">Photos</h4>
+                                <ImageGallery showPlayButton={false} items={images}/>
+                            </div>
+                            {/* Gallery area end */}
                             <div className="package-included-area">
-                                <h4 className="single-page-small-title">Included</h4>
+                                <h4 className="single-page-small-title">Best Features</h4>
                                 <div className="row">
                                     <div className="col-xl-4 col-sm-6">
                                         <div className="single-package-included">
@@ -207,87 +187,105 @@ const TourDetails = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="package-included-location">
-                                <h4 className="single-page-small-title">Your Itinerary</h4>
-                                <div className="row">
-                                    <div className="col-lg-4 col-md-4">
-                                        <div className="single-blog">
-                                            <div className="p-list">
-                                                <div className="list">1</div>
-                                                <p>Day 1</p>
+                            {/*<div className="package-included-location">*/}
+                            {/*    <h4 className="single-page-small-title">Your Itinerary</h4>*/}
+                            {/*    <div className="row">*/}
+                            {/*        <div className="col-lg-4 col-md-4">*/}
+                            {/*            <div className="single-blog">*/}
+                            {/*                <div className="p-list">*/}
+                            {/*                    <div className="list">1</div>*/}
+                            {/*                    <p>Day 1</p>*/}
+                            {/*                </div>*/}
+                            {/*                <div className="thumb">*/}
+                            {/*                    <img src={publicUrl + "assets/img/blog/8.png"} alt="blog"/>*/}
+                            {/*                </div>*/}
+                            {/*                <div className="single-blog-details">*/}
+                            {/*                    <h4 className="title">Welcome to St. John's</h4>*/}
+                            {/*                    <p className="content">After a welcome drink, we'll stroll into town and*/}
+                            {/*                        get*/}
+                            {/*                        to know each other over a hyper-local “nose-to-tail” dinner. Show*/}
+                            {/*                        more</p>*/}
+                            {/*                    <a className="btn-read-more" href="#"><span>Show More<i*/}
+                            {/*                        className="la la-arrow-right"/></span></a>*/}
+                            {/*                </div>*/}
+                            {/*            </div>*/}
+                            {/*        </div>*/}
+                            {/*        <div className="col-lg-4 col-md-4">*/}
+                            {/*            <div className="single-blog">*/}
+                            {/*                <div className="p-list">*/}
+                            {/*                    <div className="list">2</div>*/}
+                            {/*                    <p>Day 2</p>*/}
+                            {/*                </div>*/}
+                            {/*                <div className="thumb">*/}
+                            {/*                    <img src={publicUrl + "assets/img/blog/1.png"} alt="blog"/>*/}
+                            {/*                </div>*/}
+                            {/*                <div className="single-blog-details">*/}
+                            {/*                    <h4 className="title">Relaxation &amp; Exploration</h4>*/}
+                            {/*                    <p className="content">After a welcome drink, we'll stroll into town and*/}
+                            {/*                        get*/}
+                            {/*                        to know each other over a hyper-local “nose-to-tail” dinner. Show*/}
+                            {/*                        more</p>*/}
+                            {/*                    <a className="btn-read-more" href="#"><span>Show More<i*/}
+                            {/*                        className="la la-arrow-right"/></span></a>*/}
+                            {/*                </div>*/}
+                            {/*            </div>*/}
+                            {/*        </div>*/}
+                            {/*        <div className="col-lg-4 col-md-4">*/}
+                            {/*            <div className="single-blog single-blog-after-none">*/}
+                            {/*                <div className="p-list">*/}
+                            {/*                    <div className="list">3</div>*/}
+                            {/*                    <p>Day 3</p>*/}
+                            {/*                </div>*/}
+                            {/*                <div className="thumb">*/}
+                            {/*                    <img src={publicUrl + "assets/img/blog/9.png"} alt="blog"/>*/}
+                            {/*                </div>*/}
+                            {/*                <div className="single-blog-details">*/}
+                            {/*                    <h4 className="title">Farewell &amp; Departure</h4>*/}
+                            {/*                    <p className="content">After a welcome drink, we'll stroll into town and*/}
+                            {/*                        get*/}
+                            {/*                        to know each other over a hyper-local “nose-to-tail” dinner. Show*/}
+                            {/*                        more</p>*/}
+                            {/*                    <a className="btn-read-more" href="#"><span>Show More<i*/}
+                            {/*                        className="la la-arrow-right"/></span></a>*/}
+                            {/*                </div>*/}
+                            {/*            </div>*/}
+                            {/*        </div>*/}
+                            {/*    </div>*/}
+                            {/*</div>*/}
+                            <div className="host-area mt-5">
+                                <div className="single-host-wrap  pt-3" >
+                                    <h4 className="text-center">Amenities</h4>
+                                    <div className="container">
+                                        <div className="row">
+                                            <div className="col-sm-12 col-md-6 col-lg-4">
+                                                <FontAwesomeIcon icon={faSwimmer} /> Swimming Pool
                                             </div>
-                                            <div className="thumb">
-                                                <img src={publicUrl + "assets/img/blog/8.png"} alt="blog"/>
+                                            <div className="col-sm-12 col-md-6 col-lg-4">
+                                                <FontAwesomeIcon icon={faParking} /> Free Parking
                                             </div>
-                                            <div className="single-blog-details">
-                                                <h4 className="title">Welcome to St. John's</h4>
-                                                <p className="content">After a welcome drink, we'll stroll into town and
-                                                    get
-                                                    to know each other over a hyper-local “nose-to-tail” dinner. Show
-                                                    more</p>
-                                                <a className="btn-read-more" href="#"><span>Show More<i
-                                                    className="la la-arrow-right"/></span></a>
+                                            <div className="col-sm-12 col-md-6 col-lg-4">
+                                                <FontAwesomeIcon icon={faPaw} /> Pet Friendly
+                                            </div>
+                                            <div className="col-sm-12 col-md-6 col-lg-4">
+                                                <FontAwesomeIcon icon={faWind} /> Air Conditioning
+                                            </div>
+                                            <div className="col-sm-12 col-md-6 col-lg-4">
+                                                <FontAwesomeIcon icon={faCoffee} /> Tea/Coffee Maker
+                                            </div>
+                                            <div className="col-sm-12 col-md-6 col-lg-4">
+                                                <FontAwesomeIcon icon={faBath} /> Bathroom
+                                            </div>
+                                            <div className="col-sm-12 col-md-6 col-lg-4">
+                                                <FontAwesomeIcon icon={faCheck} /> Kitchen
+                                            </div>
+                                            <div className="col-sm-12 col-md-6 col-lg-4">
+                                                <FontAwesomeIcon icon={faFire} /> Heating
+                                            </div>
+                                            <div className="col-sm-12 col-md-6 col-lg-4">
+                                                <FontAwesomeIcon icon={faDrumstickBite} /> BBQ
                                             </div>
                                         </div>
                                     </div>
-                                    <div className="col-lg-4 col-md-4">
-                                        <div className="single-blog">
-                                            <div className="p-list">
-                                                <div className="list">2</div>
-                                                <p>Day 2</p>
-                                            </div>
-                                            <div className="thumb">
-                                                <img src={publicUrl + "assets/img/blog/1.png"} alt="blog"/>
-                                            </div>
-                                            <div className="single-blog-details">
-                                                <h4 className="title">Relaxation &amp; Exploration</h4>
-                                                <p className="content">After a welcome drink, we'll stroll into town and
-                                                    get
-                                                    to know each other over a hyper-local “nose-to-tail” dinner. Show
-                                                    more</p>
-                                                <a className="btn-read-more" href="#"><span>Show More<i
-                                                    className="la la-arrow-right"/></span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="col-lg-4 col-md-4">
-                                        <div className="single-blog single-blog-after-none">
-                                            <div className="p-list">
-                                                <div className="list">3</div>
-                                                <p>Day 3</p>
-                                            </div>
-                                            <div className="thumb">
-                                                <img src={publicUrl + "assets/img/blog/9.png"} alt="blog"/>
-                                            </div>
-                                            <div className="single-blog-details">
-                                                <h4 className="title">Farewell &amp; Departure</h4>
-                                                <p className="content">After a welcome drink, we'll stroll into town and
-                                                    get
-                                                    to know each other over a hyper-local “nose-to-tail” dinner. Show
-                                                    more</p>
-                                                <a className="btn-read-more" href="#"><span>Show More<i
-                                                    className="la la-arrow-right"/></span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="host-area">
-                                <div className="single-host-wrap text-center">
-                                    <div className="thumb">
-                                        <img src={publicUrl + "assets/img/client/02.png"} alt="img"/>
-                                    </div>
-                                    <h4>Mike At Atlas Obscura Trips</h4>
-                                    <p>I'm your Atlas Obscura Trip Coordinator. Since 2016, Atlas Obscura has been
-                                        offering
-                                        unusual trips to the world’s most extraordinary places. Our itineraries are
-                                        developed in close collaboration with the locals and insiders who host them—our
-                                        global community of explorers</p>
-                                    <p> Felicity Roberts will be leading your trip. A rural Newfoundlander, certified
-                                        herbalist, farmer, writer, wild food advocate, and self relic, Felicity is most
-                                        on
-                                        the barrens cutting heather to dye wool or hanging off the edge</p>
-                                    <a className="btn btn-yellow" href="#">Contact Host</a>
                                 </div>
                             </div>
                             <div className="service-location-map">
@@ -356,52 +354,54 @@ const TourDetails = () => {
                                         className="la la-arrow-right"/></span></a>
                                 </div>
                             </div>
-                            <div className="location-review-area">
-                                <form className="tp-form-wrap bg-gray tp-form-wrap-one">
-                                    <div className="row">
-                                        <div className="col-lg-6"><h4 className="single-page-small-title">Write A
-                                            Review</h4></div>
-                                        <div className="col-lg-6">
-                                            <div className="tp-review-meta text-lg-right">
-                                                <span className="mr-3 ml-0">Assigned Rating</span>
-                                                <i className="fa fa-star"/>
-                                                <i className="fa fa-star"/>
-                                                <i className="fa fa-star"/>
-                                                <i className="fa fa-star"/>
-                                                <i className="fa fa-star"/>
-                                            </div>
-                                        </div>
-                                        <div className="col-lg-6">
-                                            <label className="single-input-wrap">
-                                                <span className="single-input-title">Name</span>
-                                                <input type="text"/>
-                                            </label>
-                                        </div>
-                                        <div className="col-lg-6">
-                                            <label className="single-input-wrap">
-                                                <span className="single-input-title">Email</span>
-                                                <input type="text"/>
-                                            </label>
-                                        </div>
-                                        <div className="col-lg-12">
-                                            <label className="single-input-wrap">
-                                                <span className="single-input-title">Comments</span>
-                                                <textarea defaultValue={""}/>
-                                            </label>
-                                        </div>
-                                        <div className="col-12">
-                                            <a className="btn btn-yellow" href="#">Send</a>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
+                            {/*<div className="location-review-area">*/}
+                            {/*    <form className="tp-form-wrap bg-gray tp-form-wrap-one">*/}
+                            {/*        <div className="row">*/}
+                            {/*            <div className="col-lg-6"><h4 className="single-page-small-title">Write A*/}
+                            {/*                Review</h4></div>*/}
+                            {/*            <div className="col-lg-6">*/}
+                            {/*                <div className="tp-review-meta text-lg-right">*/}
+                            {/*                    <span className="mr-3 ml-0">Assigned Rating</span>*/}
+                            {/*                    <i className="fa fa-star"/>*/}
+                            {/*                    <i className="fa fa-star"/>*/}
+                            {/*                    <i className="fa fa-star"/>*/}
+                            {/*                    <i className="fa fa-star"/>*/}
+                            {/*                    <i className="fa fa-star"/>*/}
+                            {/*                </div>*/}
+                            {/*            </div>*/}
+                            {/*            <div className="col-lg-6">*/}
+                            {/*                <label className="single-input-wrap">*/}
+                            {/*                    <span className="single-input-title">Name</span>*/}
+                            {/*                    <input type="text"/>*/}
+                            {/*                </label>*/}
+                            {/*            </div>*/}
+                            {/*            <div className="col-lg-6">*/}
+                            {/*                <label className="single-input-wrap">*/}
+                            {/*                    <span className="single-input-title">Email</span>*/}
+                            {/*                    <input type="text"/>*/}
+                            {/*                </label>*/}
+                            {/*            </div>*/}
+                            {/*            <div className="col-lg-12">*/}
+                            {/*                <label className="single-input-wrap">*/}
+                            {/*                    <span className="single-input-title">Comments</span>*/}
+                            {/*                    <textarea defaultValue={""}/>*/}
+                            {/*                </label>*/}
+                            {/*            </div>*/}
+                            {/*            <div className="col-12">*/}
+                            {/*                <a className="btn btn-yellow" href="#">Send</a>*/}
+                            {/*            </div>*/}
+                            {/*        </div>*/}
+                            {/*    </form>*/}
+                            {/*</div>*/}
                         </div>
                     </div>
                     <div className="col-lg-4">
                         <div className="sidebar-area sidebar-area-4">
                             <div className="widget tour-list-widget">
                                 <div className="widget-tour-list-meta">
-                                    <div className="single-widget-search-input-title"><i className="fa fa-user"/> Name
+                                    <div className="single-widget-search-input-title font-weight-bold text-center"> {roomData[url].title}
+                                    </div>
+                                    <div className="single-widget-search-input-title mt-3"><i className="fa fa-user"/> Name
                                     </div>
                                     <div className="single-widget-search-input">
                                         <input type="text" placeholder="Name"/>

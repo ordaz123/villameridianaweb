@@ -35,14 +35,14 @@ const Navbar = (props) => {
                                 <li className="tp-lang">
                                     <LanguageSelector/>
                                 </li>
-                                <li className="search">
-                                    <i className="ti-search"/>
-                                </li>
-                                <li className="notification">
-                                    <a className="signUp-btn" href="#">
-                                        <i className="fa fa-user-o"/>
-                                    </a>
-                                </li>
+                                {/*<li className="search">*/}
+                                {/*    <i className="ti-search"/>*/}
+                                {/*</li>*/}
+                                {/*<li className="notification">*/}
+                                {/*    <a className="signUp-btn" href="#">*/}
+                                {/*        <i className="fa fa-user-o"/>*/}
+                                {/*    </a>*/}
+                                {/*</li>*/}
                             </ul>
                         </div>
                     </div>
@@ -65,11 +65,11 @@ const Navbar = (props) => {
                                     {/*
 						Implementirati generičko renderiranje komponente tour-details
 						*/}
-                                    <li><Link to="/tour-details/0">{roomData[0].title}</Link></li>
-                                    <li><Link to="/tour-details/1">{roomData[1].title}</Link></li>
-                                    <li><Link to="/tour-details/2">{roomData[2].title}</Link></li>
-                                    <li><Link to="/tour-details/3">{roomData[3].title}</Link></li>
-                                    <li><Link to="/tour-details/4">{roomData[4].title}</Link></li>
+                                    <li><Link to="/room/0">{roomData[0].title}</Link></li>
+                                    <li><Link to="/room/1">{roomData[1].title}</Link></li>
+                                    <li><Link to="/room/2">{roomData[2].title}</Link></li>
+                                    <li><Link to="/room/3">{roomData[3].title}</Link></li>
+                                    <li><Link to="/room/4">{roomData[4].title}</Link></li>
                                 </ul>
                             </li>
                             <li>
@@ -106,22 +106,22 @@ const Navbar = (props) => {
 			          </ul>
 			        </li> */}
                             <li>
-                                <Link to="/contact">Contact</Link>
+                                <Link to="/booking">Booking</Link>
                             </li>
                         </ul>
                     </div>
                     <div className="nav-right-content">
                         <ul>
-                            <li>
-                                <Link className="btn btn-yellow" to="/tour-details">Book Now <i
-                                    className="fa fa-paper-plane"/></Link>
-                            </li>
+                            {/*<li>*/}
+                            {/*    <Link className="btn btn-yellow" to="/tour-details">Book Now <i*/}
+                            {/*        className="fa fa-paper-plane"/></Link>*/}
+                            {/*</li>*/}
                             <li className="tp-lang">
                                 <LanguageSelector/>
                             </li>
-                            <li className="search">
-                                <i className="ti-search"/>
-                            </li>
+                            {/*<li className="search">*/}
+                            {/*    <i className="ti-search"/>*/}
+                            {/*</li>*/}
                         </ul>
                     </div>
                 </div>

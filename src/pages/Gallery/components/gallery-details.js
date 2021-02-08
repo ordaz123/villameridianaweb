@@ -25,7 +25,7 @@ class GalleryDetails extends Component {
                     <div className="gallery-filter-area row">
                       <div className="gallery-sizer col-1" />
                       {/* gallery-item */}
-                      <div className="tp-gallery-item col-md-4 col-12 mb-10">
+                      <div className="tp-gallery-item col-md-4 col-12">
                         <div className="tp-gallery-item-img">
                           <a className="popup-thumb" href={publicUrl+"assets/img/gallery/1.png"} data-effect="mfp-zoom-in">
                             <img src={publicUrl+"assets/img/gallery/1.png"} alt="image" />

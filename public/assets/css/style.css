@@ -39,10 +39,15 @@ Version: 1.0.0
     ## Button
     ## Section Title
 --------------------------------------------------------------*/
+
 @import url("https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i,900|Poppins:200,300,300i,400,400i,500,600,700,800&display=swap");
+
+
 /*--------------------------------------------------------------
 # Normalize
 --------------------------------------------------------------*/
+
+
 :root {
   --main-color-one: #F3941E;
   --main-color-two: #071C55;
@@ -68,6 +73,37 @@ html {
   /* Firefox */
   -webkit-font-smoothing: antialiased;
   /* WebKit  */ }
+
+/* CUSTOM CSS */
+.invert{
+  filter: invert(100%);
+}
+
+.sleeping-arrangement-box{
+  min-width: 130px;
+  max-width: 250px;
+  padding: 10px 20px;
+  border: 1px solid #e2e6ea;
+  border-radius: 12px;
+}
+.text-orange{
+  color: var(--main-color-one);
+}
+
+.image-gallery-slides{
+  border-radius: 12px !important;
+}
+
+.custom-select-meridiana{
+  background: #F8F8F8;
+  border: 1px solid #F8F8F8;
+  height: 52px;
+  width: 100%;
+  padding: 0 18px;
+  color: var(--paragraph-color);
+  border-radius: 4px;
+}
+/* END CUSTOM CSS */
 
 body {
   margin: 0;
