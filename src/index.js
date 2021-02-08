@@ -7,5 +7,5 @@ ReactDOM.render(
     <HashRouter basename="/">
     <App />
     </HashRouter>
-    , document.getElementById('viaje')
+    , document.getElementById('meridiana')
 );

@@ -65,11 +65,14 @@ const Navbar = (props) => {
                                     {/*
 						Implementirati generičko renderiranje komponente tour-details
 						*/}
-                                    <li><Link to="/room/0">{roomData[0].title}</Link></li>
-                                    <li><Link to="/room/1">{roomData[1].title}</Link></li>
-                                    <li><Link to="/room/2">{roomData[2].title}</Link></li>
-                                    <li><Link to="/room/3">{roomData[3].title}</Link></li>
-                                    <li><Link to="/room/4">{roomData[4].title}</Link></li>
+                                    {roomData.map(room => {
+                                        return <li><Link to={room.link}>{room.title}</Link></li>
+                                    })}
+                                    {/*<li><Link to="/room/0">{roomData[0].title}</Link></li>*/}
+                                    {/*<li><Link to="/room/1">{roomData[1].title}</Link></li>*/}
+                                    {/*<li><Link to="/room/2">{roomData[2].title}</Link></li>*/}
+                                    {/*<li><Link to="/room/3">{roomData[3].title}</Link></li>*/}
+                                    {/*<li><Link to="/room/4">{roomData[4].title}</Link></li>*/}
                                 </ul>
                             </li>
                             <li>
