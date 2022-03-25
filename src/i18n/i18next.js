@@ -1,29 +1,31 @@
 import i18n from 'i18next';
-import { initReactI18next } from 'react-i18next';
+//import { initReactI18next } from 'react-i18next';
 
-import Backend from 'i18next-http-backend';
-import LanguageDetector from 'i18next-browser-languagedetector';
+//import backend from 'i18next-http-backend';
+//import LanguageDetector from 'i18next-browser-languagedetector';
+import { reactI18nextModule } from "react-i18next";
 
-import transEN from './languages/en/translation.json'
-import transHR from './languages/hr/translation.json'
-import transDE from './languages/de/translation.json'
 
-const availableLanguages = ['en', 'hr', 'de'];
+import translationEN from './languages/en/translation.json'
+import translationHR from './languages/hr/translation.json'
+import translationDE from './languages/de/translation.json'
+
+//const availableLanguages = ['en', 'hr', 'de'];
 
 
 const resources = {
     en:{
-        translation: transEN
+        translation: translationEN
     },
     hr:{
-        translation: transHR
+        translation: translationHR
     },
     de:{
-        translation: transDE
+        translation: translationDE
     }
 
-}
-i18n
+};
+/* i18n
     .use(Backend)
     .use(LanguageDetector)
     .use(initReactI18next)
@@ -43,7 +45,23 @@ i18n
         interpolation: {
             escapeValue: false,
         }
-    });
+    }); */
+
+    i18n
+  //  .use(backend)
+  .use(reactI18nextModule) // passes i18n down to react-i18next
+  .init({
+    resources,
+    lng:'en',
+
+    keySeparator: false, // we do not use keys in form messages.welcome
+
+    interpolation: {
+      escapeValue: false // react already safes from xss
+    }
+  },
+  console.log(resources)
+  );
 
 
 export default i18n;

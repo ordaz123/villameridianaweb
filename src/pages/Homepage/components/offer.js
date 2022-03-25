@@ -3,21 +3,24 @@ import { Link } from 'react-router-dom';
 import roomData from "../../AccomodationDetails/roomData";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faUmbrellaBeach} from "@fortawesome/free-solid-svg-icons";
+import img from "../../../assets/img/room-one/img1.jpg"
+import {withNamespaces} from "react-i18next";
 
 
-class Offer extends Component {
 
-    render() {
+function Offer({t}){
+
 
         let publicUrl = process.env.PUBLIC_URL+'/'
 
-    return  <div className="offer-area pd-top-70">
+    return(
+	  <div className="offer-area pd-top-70">
 			  <div className="container">
 			    <div className="row justify-content-center">
 			      <div className="col-xl-6 col-lg-8">
 			        <div className="section-title text-center">
-			          <h2 className="title">Our Apartments</h2>
-			          <p>Lorem Ipsum is simply dummy text the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p>
+			          <h2 className="title">{t('offer')}</h2>
+			          <p>{t('offerParagraph')}</p>
 			        </div>
 			      </div>
 			    </div>
@@ -35,23 +38,23 @@ class Offer extends Component {
 									<div className="single-destinations-list text-center">
 										<div className="thumb">
 											{/*<span className="d-list-tag">Special Offer</span>*/}
-											<img src={publicUrl+"assets/img/destination-list/1.png"} alt="list" />
+											<img src={item.photos[0]} alt="list" />
 											<div className="d-list-btn-wrap">
 												<div className="d-list-btn viaje-go-top">
-													<Link className="btn btn-yellow" to="/contact">Book Now <i className="fa fa-paper-plane" /></Link>
+													<Link className="btn btn-yellow" to={item.link}>{t('sliderButton')}<i className="fa fa-paper-plane" /></Link>
 												</div>
 											</div>
 										</div>
 										<div className="details">
 											<h4 className="title">{item.title}</h4>
-											<p className="content">Atmosphere of the sunny country</p>
+											{/* <p className="content">Atmosphere of the sunny country</p> */}
 											<ul className="tp-list-meta border-bt-dot text-center">
-												<li><i className="fa fa-users" /> {item.persons} persons</li>
+												<li><i className="fa fa-users" /> {item.persons} {t('persons')}</li>
 												<li><i className="fa fa-home" />{item.space} m&sup2;</li>
 											</ul>
 											<div className="tp-price-meta tp-price-meta-cl">
-												<p>Price</p>
-												<h2>{item.price} <small>$</small></h2>
+												<p>{t('price')}</p>
+												<h2>{t('from')} {item.price} <small>€</small></h2>
 											</div>
 										</div>
 									</div>
@@ -87,7 +90,7 @@ class Offer extends Component {
 			</div>
 
 
-        }
+        )
 }
 
-export default Offer
+export default withNamespaces()(Offer)

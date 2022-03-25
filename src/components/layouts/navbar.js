@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import roomData from "../../pages/AccomodationDetails/roomData";
 import LanguageSelector from "../helpers/LanguageSelector";
-import {withTranslation} from "react-i18next";
+import {withNamespaces} from "react-i18next";
 
-const Navbar = (props) => {
+const Navbar = ({t}) => {
 
         const publicUrl = process.env.PUBLIC_URL + '/'
         const imgattr = 'logo'
@@ -15,7 +15,7 @@ const Navbar = (props) => {
                     <div className="responsive-mobile-menu">
                         <div className="mobile-logo">
                             <Link to="/">
-                                <img src={publicUrl + "assets/img/sticky-logo.png"} alt={imgattr}/>
+                                <img src={publicUrl + "assets/img/meridiana-logo.png"} alt={imgattr}/>
                             </Link>
                         </div>
                         <button className="navbar-toggler float-right" type="button" data-toggle="collapse"
@@ -28,10 +28,10 @@ const Navbar = (props) => {
                         </button>
                         <div className="nav-right-content">
                             <ul className="pl-0">
-                                <li className="top-bar-btn-booking">
-                                    <Link className="btn btn-yellow" to="/tour-details">{props.t('book')} <i
+{/*                                 <li className="top-bar-btn-booking">
+                                    <Link className="btn btn-yellow" to="/tour-details">nesto<i
                                         className="fa fa-paper-plane"/></Link>
-                                </li>
+                                </li> */}
                                 <li className="tp-lang">
                                     <LanguageSelector/>
                                 </li>
@@ -49,37 +49,30 @@ const Navbar = (props) => {
                     <div className="collapse navbar-collapse" id="tp_main_menu">
                         <div className="logo-wrapper desktop-logo">
                             <Link to="/" className="main-logo">
-                                <img src={publicUrl + "assets/img/logo.png"} alt="logo"/>
+                                <img src={publicUrl + "assets/img/meridiana-logo.png"} alt="logo"/>
                             </Link>
                             <Link to="/" className="sticky-logo">
-                                <img src={publicUrl + "assets/img/sticky-logo.png"} alt="logo"/>
+                                <img src={publicUrl + "assets/img/meridiana-logo.png"} alt="logo"/>
                             </Link>
                         </div>
                         <ul className="navbar-nav">
                             <li>
-                                <Link to="/">Home</Link>
+                                <Link to="/">{t('navHome')}</Link>
                             </li>
                             <li className="menu-item-has-children">
-                                <Link to="/">Accomodation</Link>
+                                <Link to="/">{t('navAccomodation')}</Link>
                                 <ul className="sub-menu">
-                                    {/*
-						Implementirati generičko renderiranje komponente tour-details
-						*/}
                                     {roomData.map(room => {
                                         return <li><Link to={room.link}>{room.title}</Link></li>
                                     })}
-                                    {/*<li><Link to="/room/0">{roomData[0].title}</Link></li>*/}
-                                    {/*<li><Link to="/room/1">{roomData[1].title}</Link></li>*/}
-                                    {/*<li><Link to="/room/2">{roomData[2].title}</Link></li>*/}
-                                    {/*<li><Link to="/room/3">{roomData[3].title}</Link></li>*/}
-                                    {/*<li><Link to="/room/4">{roomData[4].title}</Link></li>*/}
+
                                 </ul>
                             </li>
                             <li>
-                                <Link to="/about">About Us</Link>
+                                <Link to="/about">{t('navAbout')}</Link>
                             </li>
                             <li>
-                                <Link to="/gallery-details">Gallery</Link>
+                                <Link to="/gallery-details">{t('navGallery')}</Link>
                             </li>
                             {/* <li className="menu-item-has-children">
 			          <a href="#">Pages</a>
@@ -109,7 +102,7 @@ const Navbar = (props) => {
 			          </ul>
 			        </li> */}
                             <li>
-                                <Link to="/booking">Booking</Link>
+                                <Link to="/booking">{t('navBooking')}</Link>
                             </li>
                         </ul>
                     </div>
@@ -134,4 +127,4 @@ const Navbar = (props) => {
 }
 
 
-export default withTranslation()(Navbar)
+export default withNamespaces()(Navbar)

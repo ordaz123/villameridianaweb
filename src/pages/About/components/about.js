@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
+import galleryData from '../../Gallery/components/galleryData';
+import img1 from "../../../assets/img/grounds/Meridiana-objekt_20.JPG"
+import img2 from "../../../assets/img/grounds/Meridiana-objekt_25.JPG"
+import { withNamespaces } from 'react-i18next';
 
-class About extends Component {
 
-    render() {
+function About({t}){
+
 
         let publicUrl = process.env.PUBLIC_URL+'/'
         let imagealt = 'image'
@@ -12,21 +16,20 @@ class About extends Component {
                 <div className="row">
                   <div className="col-lg-5 align-self-center">
                     <div className="section-title mb-lg-0">
-                      <h2 className="title">Lets Go Travel <br /> with Us</h2>
-                      <p>Donec dapibus mauris id odio ornare tempus. Duis sit amet accumsan justo, quis tempor ligula. Quisque quis pharetra felis. Ut quis consequat orci, at consequat felis. Suspendisse auctor laoreet placerat. Nam et risus non lacus dignissim lacinia sit amet nec eros. Nulla vel urna quis libero pharetra varius. Nulla tellus nunc, malesuada at scelerisque eget, cursus at eros. Maecenas pellentesque lacus quis erat eleifend sagittis. Sed vel maximus ante, quis mattis neque. Nullam dapibus erat sed nulla cursus accumsan. Nulla volutpat libero lacinia venenatis sodales. Ut in pellentesque.</p>
+                      <h2 className="title">{t('aboutDiscoverPart1')} <br />{t('aboutDiscoverPart2')}</h2>
+                      <p>{t('homeOfferParagraph')}</p>
                     </div>
                   </div>
                   <div className="col-lg-5 offset-lg-2">
                     <div className="thumb about-section-right-thumb">
-                      <img src={publicUrl+"assets/img/others/9.png"} alt="img" />
-                      <img className="about-absolute-thumb" src={publicUrl+"assets/img/others/10.png"} alt="img" />
+                      <img src={img1} alt="img" />
+                      <img className="about-absolute-thumb" src={img2} alt="img" />
                     </div>
                   </div>
                 </div>
               </div>
             </div>
 
-        }
 }
 
-export default About
+export default withNamespaces()(About)

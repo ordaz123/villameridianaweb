@@ -2,29 +2,28 @@ import React from 'react';
 import Navbar from '../../components/layouts/navbar';
 import Footer from '../../components/layouts/footer';
 import Banner from './components/banner';
-import Search from './components/search';
-import Intro from './components/intro';
 import Offer from './components/offer';
 import Video from './components/video';
-import Client from './components/client';
-import Counter from './components/counter';
-import {withTranslation} from "react-i18next";
+import { withNamespaces } from "react-i18next";
+import MetaTags from 'react-meta-tags';
+import bannerImg from "../../assets/img/all/banner.jpg"
 
 const Home_V1 = (props) => {
     return (
         <div>
-            <Navbar/>
-            <Banner/>
-            <Search/>
-            <Intro/>
-            <Offer/>
-            <Video/>
-            <Counter/>
-            <Client/>
-            <Footer/>
+            <MetaTags>
+                <meta name="description" content="Villa Meridiana Orebic" />
+                <meta property="og:title" content="Villa Meridiana Orebic" />
+                <meta property="og:image" content={bannerImg} />
+            </MetaTags>
+            <Navbar />
+            <Banner />
+            <Offer />
+            <Video />
+            <Footer />
         </div>
     )
 }
 
-export default withTranslation()(Home_V1)
+export default withNamespaces()(Home_V1)
 

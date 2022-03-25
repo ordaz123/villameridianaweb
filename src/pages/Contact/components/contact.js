@@ -1,91 +1,128 @@
-import React, {Component} from 'react';
+import React, { useState, useRef } from 'react';
 import emailjs from 'emailjs-com';
+import bookingImg from "../../../assets/img/all/booking.jpg"
+import roomData from '../../AccomodationDetails/roomData';
+import { withNamespaces } from 'react-i18next';
+import { Modal, Button } from 'react-bootstrap';
 
 
-const Contact = () => {
 
+const Contact = ({ t }) => {
 
+    const [showModal, setShowModal] = useState(false);
+    const [selectValue, setSelectValue] = useState("")
+    let apartment = selectValue;
+
+    function handleClose() {
+        setShowModal(false);
+    }
     const publicUrl = process.env.PUBLIC_URL + '/'
 
-    const handleSubmit = (e) =>{
+    const form = useRef();
+
+
+    const sendEmail = (e) => {
         e.preventDefault();
 
-        emailjs.sendForm('gmail', 'template_co1q5jm', e.target, 'user_XwyCiIftu69iQYroUUmPm')
+        emailjs.sendForm('service_pyjuib9', 'template_a0egkbh', form.current, 'YELkzqpcNY6CnoyV_')
             .then((result) => {
-                alert("Your email has been sent!");
+
             }, (error) => {
-                alert("Something went wrong send us email directly!");
+                alert("Something went wrong send us an email directly!");
             });
+
+        e.target.reset();
+        setShowModal(true);
     }
 
     return <div>
+
+        <Modal show={showModal} onHide={handleClose} >
+            <Modal.Header closeButton>
+                <Modal.Title>{t("modalHead")}</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <p>{t("modalBody")}</p>
+            </Modal.Body>
+            <Modal.Footer>
+                <Button onClick={handleClose} variant="secondary">{t("modalClose")}</Button>
+            </Modal.Footer>
+        </Modal>
+
         <div className="contact-area pd-top-108">
             <div className="container">
                 <div className="row justify-content-center">
                     <div className="col-lg-6">
                         <div className="section-title text-lg-center text-left">
-                            <h2 className="title">Book your stay now!</h2>
-                            <p>Vestibulum blandit viverra convallis. Pellentesque ligula urna, fermentum ut semper in,
-                                tincidunt nec dui. Morbi mauris lacus, consequat eget justo in</p>
+                            <h2 className="title">{t('bookYourStay')}</h2>
                         </div>
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-xl-5 offset-xl-1 col-lg-6">
                         <div className="thumb">
-                            <img src={publicUrl + "assets/img/others/11.png"} alt="img"/>
+                            <img src={bookingImg} alt="img" />
                         </div>
                     </div>
                     <div className="col-xl-5 col-lg-6">
-                        <form className="tp-form-wrap" onSubmit={handleSubmit}>
+                        <form ref={form} className="tp-form-wrap" onSubmit={sendEmail}>
                             <div className="row">
                                 <div className="col-md-6">
                                     <label className="single-input-wrap style-two">
-                                        <span className="single-input-title">Name</span>
-                                        <input type="text" name="name"/>
+                                        <span className="single-input-title">{t('formName')}</span>
+                                        <input type="text" name="name" required />
                                     </label>
                                 </div>
                                 <div className="col-md-6">
                                     <label className="single-input-wrap style-two">
-                                        <span className="single-input-title">Phone number</span>
-                                        <input type="text" name="phone"/>
+                                        <span className="single-input-title">{t('formPhone')}</span>
+                                        <input type="text" name="phone" required />
                                     </label>
                                 </div>
                                 <div className="col-md-6">
                                     <label className="single-input-wrap style-two">
-                                        <span className="single-input-title">Check in</span>
-                                        <input type="date" name="checkIn"/>
+                                        <span className="single-input-title">{t('formStart')}</span>
+                                        <input type="date" name="arrivalDate" required />
                                     </label>
                                 </div>
                                 <div className="col-md-6">
                                     <label className="single-input-wrap style-two">
-                                        <span className="single-input-title">Check out</span>
-                                        <input type="date" name="checkOut"/>
+                                        <span className="single-input-title">{t('formEnd')}</span>
+                                        <input type="date" name="departureDate" required />
                                     </label>
                                 </div>
                                 <div className="col-lg-12">
                                     <label className="single-input-wrap style-two">
-                                        <span className="single-input-title">Select Apartment</span>
-                                        <select name="apartment" className="custom-select-meridiana">
-                                            <option value="op1">OP 1</option>
-                                            <option value="op2">OP 2</option>
+                                        <span className="single-input-title">{t('formApartment')}</span>
+                                        <select required name="apartment" className="custom-select-meridiana" defaultValue="" onChange={(e) => {
+                                            setSelectValue(e.target.value)
+                                           console.log(apartment) 
+                                        }}>
+                                            <option selected>Select An Apartment</option>
+                                            {roomData.map((room, key) => {
+                                                console.log(selectValue)
+                                                return (
+                                                    
+                                                    <option value={room.title}>{room.title}</option>
+                                                )
+                                            })}
                                         </select>
                                     </label>
                                 </div>
                                 <div className="col-lg-12">
                                     <label className="single-input-wrap style-two">
                                         <span className="single-input-title">Email</span>
-                                        <input type="text" name="email"/>
+                                        <input required type="text" name="email" />
                                     </label>
                                 </div>
                                 <div className="col-lg-12">
                                     <label className="single-input-wrap style-two">
-                                        <span className="single-input-title">Message</span>
-                                        <textarea defaultValue={""} name="message"/>
+                                        <span className="single-input-title">{t('formMsg')}</span>
+                                        <textarea defaultValue={""} name="message" />
                                     </label>
                                 </div>
                                 <div className="col-12">
-                                    <input type="submit" className="btn btn-yellow" value="Send"/>
+                                    <input type="submit" className="btn btn-yellow" value={t('formBtn')} />
                                 </div>
                             </div>
                         </form>
@@ -98,29 +135,28 @@ const Contact = () => {
                 <div className="row justify-content-center">
                     <div className="col-xl-7 col-lg-8 order-lg-12">
                         <iframe className="contact-map"
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d55137.3051325513!2d-97.76825118838518!3d30.263256963734733!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8644b599a0cc032f%3A0x5d9b464bd469d57a!2sAustin%2C%20TX%2C%20USA!5e0!3m2!1sen!2sbd!4v1572085289886!5m2!1sen!2sbd"/>
+                            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d11674.335960197828!2d17.1962633!3d42.9870362!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x8091790a9eede7fc!2sVilla%20Meridiana!5e0!3m2!1sen!2shr!4v1647943881258!5m2!1sen!2shr" />
                     </div>
                     <div className="col-xl-3 col-lg-4 order-lg-1">
                         <div className="contact-info bg-gray">
                             <p>
-                                <i className="fa fa-map-marker"/>
-                                <span>Lavaca Street, Suite 2000 Austin, TX 24141</span>
+                                <i className="fa fa-map-marker" />
+                                <span>Put Podvlaštice 43, 20250, Orebić</span>
                             </p>
-                            <p>
+                            {/*                             <p>
                                 <i className="fa fa-clock-o"/>
                                 <span>Office Hour 9:00 to 7:00 Sunday 10:00 to 5:00</span>
-                            </p>
-                            <p>
-                                <i className="fa fa-envelope"/>
-                                <span>Email: <span>Travelpoint@gmail.com</span></span>
-                            </p>
-                            <p>
-                                <i className="fa fa-phone"/>
+                            </p> */}
+                            {/* <p>
+                                <i className="fa fa-envelope" />
+                                travelpoint@gmail.com
+                            </p> */}
+                            {/* <p>
+                                <i className="fa fa-phone" />
                                 <span>
-                            sell phone: <span>(+88) 0172 570051</span> <br/>
-                            telephone: <span>(+88) 07 528 7584</span>
-                          </span>
-                            </p>
+                                    <span>+385 21 542 233</span>
+                                </span>
+                            </p> */}
                         </div>
                     </div>
                 </div>
@@ -130,4 +166,4 @@ const Contact = () => {
 
 }
 
-export default Contact
+export default withNamespaces()(Contact)

@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import parse from 'html-react-parser';
 
-class Client extends Component {
-
-    render() {
+function Client(){
 
         let publicUrl = process.env.PUBLIC_URL+'/'
 
@@ -13,8 +11,8 @@ class Client extends Component {
 			    <div className="row justify-content-center">
 			      <div className="col-xl-6 col-lg-8">
 			        <div className="section-title text-center style-two">
-			          <h2 className="title">What Our Clicnts Say</h2>
-			          <p>Vivamus eget aliquam dui. Integer eu arcu vel arcu suscipit ultrices quis non mauris. Aenean scelerisque, sem eu dictum commodo, velit nisi</p>
+			          <h2 className="title">What Our Past Guests Say</h2>
+			          {/* <p>Vivamus eget aliquam dui. Integer eu arcu vel arcu suscipit ultrices quis non mauris. Aenean scelerisque, sem eu dictum commodo, velit nisi</p> */}
 			        </div>
 			      </div>
 			    </div>
@@ -116,8 +114,6 @@ class Client extends Component {
 			</div>
 
 
-
-        }
 }
 
 export default Client

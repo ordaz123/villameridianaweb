@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import parse from 'html-react-parser';
 
-class Intro extends Component {
+function Intro(){
 
-    render() {
 
         let publicUrl = process.env.PUBLIC_URL+'/'
 
@@ -42,7 +41,6 @@ class Intro extends Component {
 				  </div>
 				</div>
 
-        }
 }
 
 export default Intro

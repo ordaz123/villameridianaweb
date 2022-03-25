@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import parse from 'html-react-parser';
+import roomData from "../../AccomodationDetails/roomData";
 
-class Searach extends Component {
 
-    render() {
+function Search(){
 
         let publicUrl = process.env.PUBLIC_URL+'/'
         let imagealt = 'image'
@@ -13,26 +13,31 @@ class Searach extends Component {
 		  <div className="container">
 		    <div className="tp-main-search">
 		      <div className="row">
-		        <div className="col-lg-3 col-md-4">
+		        <div className="col-lg-2 col-md-4">
 		          <div className="tp-search-single-wrap">
-		            <input className="w-100" type="text" placeholder="Bangladesh,Dhaka" />
-		            <i className="ti-location-pin" />
+		            <input className="w-100" type="text" placeholder="First Name" />
+		            <i className="fa fa-dot-circle-o" />
 		          </div>
 		        </div>
 		        <div className="col-lg-2 col-md-4">
 		          <div className="tp-search-single-wrap">
-		            <input className="w-100" type="text" placeholder="Where From?" />
+		            <input className="w-100" type="text" placeholder="Last Name" />
 		            <i className="fa fa-dot-circle-o" />
 		          </div>
 		        </div>
-		        <div className="col-lg-2 col-md-4 order-lg-9">
+		        <div className="col-lg-3 col-md-4 order-lg-9">
 		          <div className="tp-search-single-wrap float-left w-100">
-		            <select className="select w-100">
-		              <option value={1}>Travel Type</option>
-		              <option value={2}>Event Travel</option>
-		              <option value={3}>Weekend Break</option>
-		              <option value={4}>Package Holiday</option>
-		              <option value={5}>Business Travel</option>
+		            <select className="select w-100" placeholder='Select Apartment'>
+{/* 		              <option value={1}>Apartment 1</option>
+		              <option value={2}>Apartment 2</option>
+		              <option value={3}>Apartment 3</option>
+		              <option value={4}>Apartment 4</option>
+		              <option value={5}>Apartment 5</option> */}
+					  {roomData.map((room,key)=>{
+						  return(
+						  <option value={key}>{room.title}</option>
+						  )
+					  })}
 		            </select>
 		            <i className="fa fa-plus-circle" />
 		          </div>
@@ -50,14 +55,13 @@ class Searach extends Component {
 		          </div>
 		        </div>
 		        <div className="col-lg-2 col-md-4 order-12">
-		          <Link className="btn btn-yellow" to="/tour-list"><i className="ti-search" /> Search</Link>
+		          <Link className="btn btn-yellow" to="/booking"><i className="ti-location-pin" /> Search</Link>
 		        </div>
 		      </div>
 		    </div>
 		  </div>
 		</div>
 
-        }
 }
 
-export default Searach
+export default Search
