@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import roomData from "../../AccomodationDetails/roomData";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faUmbrellaBeach} from "@fortawesome/free-solid-svg-icons";
-import img from "../../../assets/img/room-one/img1.jpg"
 import {withNamespaces} from "react-i18next";
 
 
@@ -52,10 +49,10 @@ function Offer({t}){
 												<li><i className="fa fa-users" /> {item.persons} {t('persons')}</li>
 												<li><i className="fa fa-home" />{item.space} m&sup2;</li>
 											</ul>
-											<div className="tp-price-meta tp-price-meta-cl">
+											{/* <div className="tp-price-meta tp-price-meta-cl">
 												<p>{t('price')}</p>
 												<h2>{t('from')} {item.price} <small>€</small></h2>
-											</div>
+											</div> */}
 										</div>
 									</div>
 								</div>

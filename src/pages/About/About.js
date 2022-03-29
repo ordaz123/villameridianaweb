@@ -6,7 +6,6 @@ import About from './components/about';
 import Video from './components/video-v2';
 import Footer from '../../components/layouts/footer';
 import { withNamespaces } from "react-i18next";
-//import Map from "../../components/layouts/map";
 import MetaTags from 'react-meta-tags';
 import bannerImg from "../../assets/img/all/banner.jpg"
 
@@ -26,7 +25,6 @@ return (
         <Intro />
         <About />
         <Video />
-        {/* <Map/> */}
         <Footer />
     </div>
 )

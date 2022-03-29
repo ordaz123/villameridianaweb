@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 //import i18next ,{withNamespaces} from "../../i18n/i18next";
 //import i18n from '../../i18n/i18next';
 
@@ -29,16 +29,16 @@ function LanguageSelector({ t }) {
 
 
         <select className="nice-select" data-width="fit" defaultValue={value} onChange={(e) => changeLanguage(e.target.value)}>
-{/*         <option value="default" disabled hidden>
+            {/*         <option value="default" disabled hidden>
           Language
         </option> */}
-            <option value="hr">Hrvatski</option>
             <option value="en">English</option>
+            <option value="hr">Hrvatski</option>
             <option value="de">Deutsch</option>
 
         </select>
 
-{/*         <select className='select single-select' data-width="fit" name="languages" value={t('selectLanguage')} onChange={(e) => console.log(e.target.value)
+        {/*         <select className='select single-select' data-width="fit" name="languages" value={t('selectLanguage')} onChange={(e) => console.log(e.target.value)
         }>
             {/* <option value="" disabled hidden>{t('select_language')}</option> 
             <option value="hr">Hrvatski</option>

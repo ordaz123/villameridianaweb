@@ -13,7 +13,6 @@ const TourDetailsPage = () => {
             <meta property="og:image" content={bannerImg} />
           </MetaTags>
         <Navbar />
-        {/*<PageHeader headertitle="Tour Details"  />*/}
         <TourDetails />
         <Footer />
     </div>

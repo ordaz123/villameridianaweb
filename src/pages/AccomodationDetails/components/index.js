@@ -105,10 +105,10 @@ const TourDetails = ({ t }) => {
                             <div className="col-xl-12 col-lg-12">
                                 <div className="book-list-warp">
                                     <p className="book-list-content">{t('apartmentHeader')}</p>
-                                    <div className="tp-price-meta">
+                                    {/* <div className="tp-price-meta">
                                         <p>{t('price')}<small> / {t('night')}</small></p>
                                         <h2>{roomData[url].price}<small>€</small></h2>
-                                    </div>
+                                    </div> */}
                                 </div>
                                 <ul className="tp-list-meta border-tp-solid">
                                     <li className="ml-0"><i className="fa fa-users" />{roomData[url].persons} {t('persons')}</li>
@@ -244,10 +244,6 @@ const TourDetails = ({ t }) => {
                                     </form>
                                 </div>
                             </div>
-                            {/*                             <div className="widget_ads">
-                                <a href="#"><img className="w-100" src={publicUrl + "assets/img/others/01.png"}
-                                                 alt="img"/></a>
-                            </div> */}
                         </div>
                     </div>
                 </div>

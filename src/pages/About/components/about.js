@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import galleryData from '../../Gallery/components/galleryData';
-import img1 from "../../../assets/img/grounds/Meridiana-objekt_20.JPG"
-import img2 from "../../../assets/img/grounds/Meridiana-objekt_25.JPG"
+import img1 from "../../../assets/img/grounds/Meridiana-objekt_20.jpg"
+import img2 from "../../../assets/img/grounds/Meridiana-objekt_25.jpg"
 import { withNamespaces } from 'react-i18next';
 
 
